@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Base</title>
+    <!-- Latest compiled and minified CSS -->
+
+</head>
+ <style>
+{
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px 22px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+--
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+h1 {
+  text-shadow: 2px 2px 8px #010101;
+}
+
+
+
+
+   </style>
+
+
+  <body>
+  <div class="header">
+
+	<bold>		<h1 class="name">INTRA-COLLEGE COMMUNICATION SYSTEM</h1></bold>
+
+  <div class="navbar">
+        {% if user.is_authenticated %}
+          {% if user.role == 'student' %}
+          <a class="navbar-brand" href="{% url 'index' %}">HOME</a>
+          <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+          <a class="navbar-brand" href="{% url 'index' %}">HOME</a>
+
+
+          <a class="navbar-brand" href="{% url 'student:loginnext' %}">Send Mail</a>
+      <a class="navbar-brand" href="{% url 'student:sms' %}">Send SMS</a>
+      <a class="navbar-brand" href="{% url 'student:change_password' %}">Change password</a>
+          <a href="{% url 'logout' %}">Logout</a>
+
+          {% endif %}
+        {% else %}
+          <a class="navbar-brand" href="{% url 'index' %}">HOME</a>
+        <a class="navbar-link" href="{% url  'admin:index' %}">ADMIN</a>
+         <a class="navbar-link" href="{% url 'student:user_login' %}">STAFF</a>
+         <a class="navbar-link" href="{% url 'student:user_login2' %}">STUDENT</a>
+
+
+      {% endif %}
+</div>
+<br><br>
+  <div class="container">
+    {% block body_block %}
+    {% endblock %}
+      {% load static %}
+        <img src="{% static '2.jpg' %}" height="400" width="1150">
+<br><br>
+    </div>
+
+
+
+  </body>
+</html>
