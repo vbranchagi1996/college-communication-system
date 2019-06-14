@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=message], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cols: 40;
+  rows: 10;
+  box-sizing: border-box;
+}
+
+
+
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<center><h1><b>Send Email</h1></center></b></center>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="id_from_email"><b>From Email:</b></label>
+    <input type="email" required id="id_from_email" name="from_email"><br>
+   <label for="id_to_email"><b>To email:</b></label>
+    <input type="text" required id="id_to_email" name="to_email"><br>
+      <label for="id_subject"><b>Subject:</b></label>
+    <input type="text" required id="id_subject" name="subject"><br>
+   <label for="message"><b>Message:</b></label>
+     <textarea id="message" name="message" placeholder="Write something.." style="height:150px"> </textarea>
+
+
+    <div class="form-actions">
+
+    <input type="submit" value="Submit"></div>
+
+
+  </form>
+</body>
+</html>
