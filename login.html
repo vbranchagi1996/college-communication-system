@@ -1,0 +1,38 @@
+
+{% extends 'student/base.html' %}
+{% block body_block %}
+<center>  <h1>Login Here</h1>
+  <div class="container">
+    <div class="jumbotron">
+
+
+<form method="post" action="{% url 'student:user_login' %}">
+          {% csrf_token %}
+          {# A more "HTML" way of creating the login form#}
+    <table width="30%" bgcolor=	#FFFACD align="center">
+{% load static %}
+        <img src="{% static 'login.png' %}" height="200" width="200">
+<br><br>
+        <tr>
+            <td><font color="black">Username:</font></td>
+<td>  <input type="text" name="username" placeholder="Username"></td>
+</tr>
+
+<tr>
+    <td><font color="black">Password:</font></td>
+<td><input type="password" name="password" placeholder="Password"></td>
+</tr>
+
+<tr>
+    <td colspan="2" ><button type="submit" > Login </button></td>
+</tr>
+
+</table>
+<br><br><br>
+</form>
+</div>
+  </div>
+{% endblock %}
+</center>
+
+
